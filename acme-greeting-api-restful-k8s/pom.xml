@@ -233,6 +233,59 @@
 				</executions>
 			</plugin>
 
+			<!-- docker-maven-plugin : Plugin for running and creating Docker images -->
+			<plugin>
+				<groupId>io.fabric8</groupId>
+				<artifactId>docker-maven-plugin</artifactId>
+				<version>0.33.0</version>
+				<configuration>
+					<registry>http://localhost:8083/repository/docker-registry/</registry>
+					<authConfig>
+						<username>admin</username>
+						<password>admin123</password>
+					</authConfig>
+					<images>
+						<image>
+							<name>localhost:8083/acme/${project.name}-nexushub:${project.version}</name>
+							<alias>${project.name}-nexushub</alias>
+							<build>
+								<dockerFileDir>${project.basedir}</dockerFileDir>
+							</build>
+						</image>
+					</images>
+				</configuration>
+			</plugin>
+
+			<!-- jib-maven-plugin -->
+			<!-- 
+			<plugin>
+				<groupId>com.google.cloud.tools</groupId>
+				<artifactId>jib-maven-plugin</artifactId>
+				<version>0.9.9</version>
+				<configuration>
+					<from>
+						<image>openjdk:8u171-alpine</image>
+						<auth>
+							<username>docker-hub-username</username>
+							<password>docker-hub-password</password>
+						</auth>
+					</from>
+					<to>
+						<image>docker-hud-userid/${project.artifactId}:${project.version}</image>
+						<auth>
+							<username>docker-hub-username</username>
+							<password>>docker-hub-password</password>
+						</auth>
+					</to>
+					<container>
+						<jvmFlags>
+							<jvmFlag>-Xms512m</jvmFlag>
+							<jvmFlag>-Xmx512m</jvmFlag>
+						</jvmFlags>
+					</container>
+				</configuration>
+			</plugin>-->
+
 		</plugins>
 	</build>
 
