@@ -1,4 +1,6 @@
-FROM java:8
+# FROM java:8
+
+FROM openjdk:8-jre
 
 # FROM openjdk:8-jdk-alpine
 
